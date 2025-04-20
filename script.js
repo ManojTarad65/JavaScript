@@ -171,4 +171,34 @@ for (let i = 1; i <= 20; i++) {
   }
 }
 
-//Functions
+//Functions in JavaScript -> Functions are blocks of reusable code. They help avoid repetition, make your code modular, and easier to maintain.
+
+//Function Declaration
+function greet(name){
+    console.log("Hello " + name);
+}
+greet("Manoj");
+
+//Function Expression
+const greet2= function(a,b){
+    return a+b;
+}
+console.log(greet2(10,20));
+
+//Arrow Function
+const greet3=(a,b)=> a*b;
+console.log(greet3(10,2));
+
+//single parameter
+const greet4=x=>x*x;
+console.log(greet4(10));
+
+//Arrays in JavaScript --> Arrays are ordered collections used to store multiple values in a single variable.
+
+let fruits1 = ["Apple", "Banana", "Mango"];
+console.log(fruits1); // [ 'Apple', 'Banana', 'Mango' ]
+
+
+
+
+    
