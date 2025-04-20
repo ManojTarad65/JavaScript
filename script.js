@@ -278,4 +278,175 @@ console.log(index); // 1
 //.includes() -> Returns true if an array contains a specific value.
 console.log(numbers.includes(3)); // true
 
-    
+//Objects in JavaScript ->collection of  key value pair. It allows you to store  multiple pieces if related data in one place.
+let person1={
+  name:"manoj",
+  age:21,
+  isStudent:true
+  
+}
+console.log(person1.name="ok"); // we can modifying object properties 
+console.log(person1.age=22);
+console.log(person1.isStudent);
+console.log(person1);
+
+//adding new properties
+person1.city="jaipur";
+console.log(person1);
+
+//deleting properties
+delete person1.isStudent;
+console.log(person1);
+
+//checking if property Exists 
+console.log("name" in person); // true
+
+//Looping through object 
+// for ...in loop
+for (let key in person1){
+  console.log(key + ":" + person1[key]);
+}
+
+//Nested objects
+let user1={
+  name:"Manoj",
+  age:21,
+  isStudent:true,
+  address : {
+    city:"jaipur",
+    state:"Rajasthan"
+  }
+}
+console.log(user1.address.city);
+
+//object methods (function inside object)
+let student ={
+  name:"Manoj",
+  age:21,
+  greet: function(){
+    console.log("Hello, I am " + this.name);
+   }
+}
+student.greet();// Hello , I am Manoj
+
+//using object methods
+
+//return array of string
+let keys = Object.keys(person1);
+console.log(keys);
+//return array of values
+let value = Object.values(person1);
+console.log(value);
+//return array of entries
+let entries=Object.entries(person1);
+console.log(entries);
+
+//Destructuring (array 7 objects) -> Extract values from arrays or objects.
+// -> that allows you to unpack values from arrays or objects into individual variables — clean and readable!
+
+//destructuring array
+let numbers2= [10,20,20];
+let [j,h,i]=numbers2;
+console.log(j);
+console.log(h);
+console.log(i);
+
+//skipping elements
+let [first, ,third]= [1,2,3];
+console.log(first);//1
+console.log(third);//3
+
+//object Destructuring -> extract values from an object using keys
+let user2= {
+    name3:"Manoj",
+    age3:21,
+}
+let {name3,age3}=user2;
+console.log(name3);
+console.log(age3);
+
+//renaming variables
+let {name:userName , age:userAge}=user;
+console.log(userName);
+console.log(userAge);
+
+//nested Destructuring 
+let person2={
+  name: "manoj",
+  age:21,
+  address:{
+    city:"jaipur",
+    state:"Rajasthan"
+  }
+}
+let {address: {city,zip}}=person2;
+console.log(city);//jaipur
+console.log(zip); //undefined
+
+//desstructuring in function parameters
+function printUser({name,age}){
+  console.log(`${name} is ${age} years old`);
+}
+let userInfo= {name:"manoj",age:21};
+printUser(userInfo);
+
+//Benefits of Destructuring
+//✅ Cleaner Code
+//✅ More readable
+//✅ Easy access to deep data (especially in APIs)
+
+//Spread and Rest Operators(...)
+//Spread Operator -> to expand or unpack values
+let arr1=[1,2,3];
+let arr2=[...arr1,4,5,6];
+console.log(arr2);//1,2,3,4,5,6
+
+// copying array
+let original=[10,20];
+let copy=[...original];
+copy.push(30);
+console.log(original);//10,20
+console.log(copy);//10,20,30
+
+//spreading object
+let person3={name:"manoj",age:21};
+let person4={...person3, city:"jaipur"};
+console.log(person4); // {name:"manoj",age:21,city:"jaipur"}
+
+//spread in function arguments
+function sum(a,b,c){
+  return a+b+c;
+}
+let nums=[1,2,3];
+console.log(sum(...nums)); // 6
+
+//Rest -> to collect remaining values
+
+let [first1, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(first1); // 1
+console.log(second); // 2
+console.log(rest); // [3, 4, 5]
+
+//rest in objects
+let {name5, ...other}={
+
+  name:"manoj",
+  age:21,
+  city:"jaipur"
+};
+console.log(name5);// name
+console.log(other); // {age:21,city:"jaipur"}
+
+//Rest in function
+function multiplyAll(...nums){
+  return nums.reduce((acc,num)=>acc*num);
+}
+console.log(multiplyAll(1,2,3));// 6
+
+// Scope and Closures -> 
+
+
+
+
+
+
