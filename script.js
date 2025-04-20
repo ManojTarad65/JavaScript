@@ -198,7 +198,84 @@ console.log(greet4(10));
 let fruits1 = ["Apple", "Banana", "Mango"];
 console.log(fruits1); // [ 'Apple', 'Banana', 'Mango' ]
 
+//Examples of Common Methods: 
+//Adding elements
+fruits1.push("Grapes");
+console.log(fruits1); // [ 'Apple', 'Banana', 'Mango', 'Grapes' ]
+
+//Removing elements
+fruits1.pop();
+console.log(fruits1); // [ 'Apple', 'Banana', 'Mango' ]
+
+//Removing from start
+fruits1.shift();
+console.log(fruits1); // [ 'Banana', 'Mango' ]
+
+//Adding from start
+fruits1.unshift("Grapes");
+console.log(fruits1); // [ 'Grapes', 'Banana', 'Mango' ]
+
+//Adding at specific position
+fruits1.splice(1,1,"Apple");
+console.log(fruits1); // [ 'Grapes', 'Apple', 'Mango' ]
+
+//Sorting
+fruits1.sort();
+console.log(fruits1); // [ 'Apple', 'Grapes', 'Mango' ]
+
+//Reversing
+fruits1.reverse();
+console.log(fruits1); // [ 'Mango', 'Grapes', 'Apple' ]
+
+//Checking for an element
+console.log(fruits1.includes("Apple")); // true
 
 
+//Array Higher Order Methods (map, filter, reduce, etc.)
+
+// .forEach() -> Iterates over each element and applies a function.
+let numbers = [1, 2, 3, 4, 5];
+numbers.forEach(num=>{
+  console.log(num*2);
+})
+
+//.map() -> Returns a new array by applying a function to each element.
+let number2=[1,2,3,4,5];
+let newNumber2=number2.map(number2=>{
+  console.log(number2*number2); // [1,4,9,16,25]
+  return number2*2;
+})
+
+//.filter() -> Returns a new array containing elements that satisfy a condition.
+let evenNumbers = numbers.filter(num => num % 2 == 0);
+console.log(evenNumbers); // [2,4]
+
+//.reduce() -> Returns a single value by applying a function cumulatively.
+let max = [5, 2, 9, 1].reduce((a, b) => a > b ? a : b);
+console.log(max); // 9
+
+//.find() -> Returns the first element that satisfies a condition.
+let users = [
+  { name: "Manoj", age: 21 },
+  { name: "Tarun", age: 19 }
+];
+
+let user = users.find(user => user.age === 19);
+console.log(user); // { name: 'Tarun', age: 19 }
+
+//.some() -> Returns true if at least one element satisfies a condition.
+let hasEven = numbers.some(num => num % 2 == 0);
+console.log(hasEven); // true
+
+//.every() -> Returns true if all elements satisfy a condition.
+let allEven = numbers.every(num => num % 2 == 0);
+console.log(allEven); // false
+
+//.findIndex() -> Returns the index of the first element that satisfies a condition.
+let index = users.findIndex(user => user.age === 19);
+console.log(index); // 1
+
+//.includes() -> Returns true if an array contains a specific value.
+console.log(numbers.includes(3)); // true
 
     
