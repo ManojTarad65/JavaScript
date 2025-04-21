@@ -443,7 +443,27 @@ function multiplyAll(...nums){
 }
 console.log(multiplyAll(1,2,3));// 6
 
-// Scope and Closures -> 
+// Scope and Closures -> Understanding where variables live (scope) and how functions remember their environment (closures) is key to mastering JavaScript.
+
+// Global Scope--> Declared outside any function – accessible anywhere.
+let name = "Manoj";
+
+function greet() {
+  console.log(name); // Accessible
+}
+
+greet(); // Manoj
+
+//Function Scope -->Declared inside a function – only accessible inside it.
+function greet() {
+  let age = 21;
+  console.log(age); // 21
+}
+greet();
+// console.log(age); ❌ Error: age is not defined
+
+
+
 
 
 
