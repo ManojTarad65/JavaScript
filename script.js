@@ -174,23 +174,23 @@ for (let i = 1; i <= 20; i++) {
 //Functions in JavaScript -> Functions are blocks of reusable code. They help avoid repetition, make your code modular, and easier to maintain.
 
 //Function Declaration
-function greet(name){
-    console.log("Hello " + name);
+function greet(name) {
+  console.log("Hello " + name);
 }
 greet("Manoj");
 
 //Function Expression
-const greet2= function(a,b){
-    return a+b;
-}
-console.log(greet2(10,20));
+const greet2 = function (a, b) {
+  return a + b;
+};
+console.log(greet2(10, 20));
 
 //Arrow Function
-const greet3=(a,b)=> a*b;
-console.log(greet3(10,2));
+const greet3 = (a, b) => a * b;
+console.log(greet3(10, 2));
 
 //single parameter
-const greet4=x=>x*x;
+const greet4 = (x) => x * x;
 console.log(greet4(10));
 
 //Arrays in JavaScript --> Arrays are ordered collections used to store multiple values in a single variable.
@@ -198,7 +198,7 @@ console.log(greet4(10));
 let fruits1 = ["Apple", "Banana", "Mango"];
 console.log(fruits1); // [ 'Apple', 'Banana', 'Mango' ]
 
-//Examples of Common Methods: 
+//Examples of Common Methods:
 //Adding elements
 fruits1.push("Grapes");
 console.log(fruits1); // [ 'Apple', 'Banana', 'Mango', 'Grapes' ]
@@ -216,7 +216,7 @@ fruits1.unshift("Grapes");
 console.log(fruits1); // [ 'Grapes', 'Banana', 'Mango' ]
 
 //Adding at specific position
-fruits1.splice(1,1,"Apple");
+fruits1.splice(1, 1, "Apple");
 console.log(fruits1); // [ 'Grapes', 'Apple', 'Mango' ]
 
 //Sorting
@@ -230,104 +230,102 @@ console.log(fruits1); // [ 'Mango', 'Grapes', 'Apple' ]
 //Checking for an element
 console.log(fruits1.includes("Apple")); // true
 
-
 //Array Higher Order Methods (map, filter, reduce, etc.)
 
 // .forEach() -> Iterates over each element and applies a function.
 let numbers = [1, 2, 3, 4, 5];
-numbers.forEach(num=>{
-  console.log(num*2);
-})
+numbers.forEach((num) => {
+  console.log(num * 2);
+});
 
 //.map() -> Returns a new array by applying a function to each element.
-let number2=[1,2,3,4,5];
-let newNumber2=number2.map(number2=>{
-  console.log(number2*number2); // [1,4,9,16,25]
-  return number2*2;
-})
+let number2 = [1, 2, 3, 4, 5];
+let newNumber2 = number2.map((number2) => {
+  console.log(number2 * number2); // [1,4,9,16,25]
+  return number2 * 2;
+});
 
 //.filter() -> Returns a new array containing elements that satisfy a condition.
-let evenNumbers = numbers.filter(num => num % 2 == 0);
+let evenNumbers = numbers.filter((num) => num % 2 == 0);
 console.log(evenNumbers); // [2,4]
 
 //.reduce() -> Returns a single value by applying a function cumulatively.
-let max = [5, 2, 9, 1].reduce((a, b) => a > b ? a : b);
+let max = [5, 2, 9, 1].reduce((a, b) => (a > b ? a : b));
 console.log(max); // 9
 
 //.find() -> Returns the first element that satisfies a condition.
 let users = [
   { name: "Manoj", age: 21 },
-  { name: "Tarun", age: 19 }
+  { name: "Tarun", age: 19 },
 ];
 
-let user = users.find(user => user.age === 19);
+let user = users.find((user) => user.age === 19);
 console.log(user); // { name: 'Tarun', age: 19 }
 
 //.some() -> Returns true if at least one element satisfies a condition.
-let hasEven = numbers.some(num => num % 2 == 0);
+let hasEven = numbers.some((num) => num % 2 == 0);
 console.log(hasEven); // true
 
 //.every() -> Returns true if all elements satisfy a condition.
-let allEven = numbers.every(num => num % 2 == 0);
+let allEven = numbers.every((num) => num % 2 == 0);
 console.log(allEven); // false
 
 //.findIndex() -> Returns the index of the first element that satisfies a condition.
-let index = users.findIndex(user => user.age === 19);
+let index = users.findIndex((user) => user.age === 19);
 console.log(index); // 1
 
 //.includes() -> Returns true if an array contains a specific value.
 console.log(numbers.includes(3)); // true
 
 //Objects in JavaScript ->collection of  key value pair. It allows you to store  multiple pieces if related data in one place.
-let person1={
-  name:"manoj",
-  age:21,
-  isStudent:true
-  
-}
-console.log(person1.name="ok"); // we can modifying object properties 
-console.log(person1.age=22);
+let person1 = {
+  name: "manoj",
+  age: 21,
+  isStudent: true,
+};
+console.log((person1.name = "ok")); // we can modifying object properties
+console.log((person1.age = 22));
 console.log(person1.isStudent);
 console.log(person1);
 
 //adding new properties
-person1.city="jaipur";
+person1.city = "jaipur";
 console.log(person1);
 
 //deleting properties
 delete person1.isStudent;
 console.log(person1);
 
-//checking if property Exists 
+//checking if property Exists
 console.log("name" in person); // true
 
-//Looping through object 
+//Looping through object
 // for ...in loop
-for (let key in person1){
+for (let key in person1) {
   console.log(key + ":" + person1[key]);
 }
 
 //Nested objects
-let user1={
-  name:"Manoj",
-  age:21,
-  isStudent:true,
-  address : {
-    city:"jaipur",
-    state:"Rajasthan"
-  }
-}
+let user1 = {
+  name: "Manoj",
+  age: 21,
+  isStudent: true,
+  address: {
+    city: "jaipur",
+    state: "Rajasthan",
+  },
+};
 console.log(user1.address.city);
 
 //object methods (function inside object)
-let student ={
-  name:"Manoj",
-  age:21,
-  greet: function(){
+let student = {
+  name: "Manoj",
+  age: 21,
+  greet: function () {
     console.log("Hello, I am " + this.name);
-   }
-}
-student.greet();// Hello , I am Manoj
+  },
+};
+student.greet(); // Hello , I am Manoj
 
 //using object methods
 
@@ -338,56 +336,58 @@ console.log(keys);
 let value = Object.values(person1);
 console.log(value);
 //return array of entries
-let entries=Object.entries(person1);
+let entries = Object.entries(person1);
 console.log(entries);
 
 //Destructuring (array 7 objects) -> Extract values from arrays or objects.
 // -> that allows you to unpack values from arrays or objects into individual variables — clean and readable!
 
 //destructuring array
-let numbers2= [10,20,20];
-let [j,h,i]=numbers2;
+let numbers2 = [10, 20, 20];
+let [j, h, i] = numbers2;
 console.log(j);
 console.log(h);
 console.log(i);
 
 //skipping elements
-let [first, ,third]= [1,2,3];
-console.log(first);//1
-console.log(third);//3
+let [first, , third] = [1, 2, 3];
+console.log(first); //1
+console.log(third); //3
 
 //object Destructuring -> extract values from an object using keys
-let user2= {
-    name3:"Manoj",
-    age3:21,
-}
-let {name3,age3}=user2;
+let user2 = {
+  name3: "Manoj",
+  age3: 21,
+};
+let { name3, age3 } = user2;
 console.log(name3);
 console.log(age3);
 
 //renaming variables
-let {name:userName , age:userAge}=user;
+let { name: userName, age: userAge } = user;
 console.log(userName);
 console.log(userAge);
 
-//nested Destructuring 
-let person2={
+//nested Destructuring
+let person2 = {
   name: "manoj",
-  age:21,
-  address:{
-    city:"jaipur",
-    state:"Rajasthan"
-  }
-}
-let {address: {city,zip}}=person2;
-console.log(city);//jaipur
+  age: 21,
+  address: {
+    city: "jaipur",
+    state: "Rajasthan",
+  },
+};
+let {
+  address: { city, zip },
+} = person2;
+console.log(city); //jaipur
 console.log(zip); //undefined
 
 //desstructuring in function parameters
-function printUser({name,age}){
+function printUser({ name, age }) {
   console.log(`${name} is ${age} years old`);
 }
-let userInfo= {name:"manoj",age:21};
+let userInfo = { name: "manoj", age: 21 };
 printUser(userInfo);
 
 //Benefits of Destructuring
@@ -397,27 +397,27 @@ printUser(userInfo);
 
 //Spread and Rest Operators(...)
 //Spread Operator -> to expand or unpack values
-let arr1=[1,2,3];
-let arr2=[...arr1,4,5,6];
-console.log(arr2);//1,2,3,4,5,6
+let arr1 = [1, 2, 3];
+let arr2 = [...arr1, 4, 5, 6];
+console.log(arr2); //1,2,3,4,5,6
 
 // copying array
-let original=[10,20];
-let copy=[...original];
+let original = [10, 20];
+let copy = [...original];
 copy.push(30);
-console.log(original);//10,20
-console.log(copy);//10,20,30
+console.log(original); //10,20
+console.log(copy); //10,20,30
 
 //spreading object
-let person3={name:"manoj",age:21};
-let person4={...person3, city:"jaipur"};
+let person3 = { name: "manoj", age: 21 };
+let person4 = { ...person3, city: "jaipur" };
 console.log(person4); // {name:"manoj",age:21,city:"jaipur"}
 
 //spread in function arguments
-function sum(a,b,c){
-  return a+b+c;
+function sum(a, b, c) {
+  return a + b + c;
 }
-let nums=[1,2,3];
+let nums = [1, 2, 3];
 console.log(sum(...nums)); // 6
 
 //Rest -> to collect remaining values
@@ -428,28 +428,29 @@ console.log(second); // 2
 console.log(rest); // [3, 4, 5]
 
 //rest in objects
-let {name5, ...other}={
-
-  name:"manoj",
-  age:21,
-  city:"jaipur"
+let { name5, ...other } = {
+  name: "manoj",
+  age: 21,
+  city: "jaipur",
 };
-console.log(name5);// name
+console.log(name5); // name
 console.log(other); // {age:21,city:"jaipur"}
 
 //Rest in function
-function multiplyAll(...nums){
-  return nums.reduce((acc,num)=>acc*num);
+function multiplyAll(...nums) {
+  return nums.reduce((acc, num) => acc * num);
 }
-console.log(multiplyAll(1,2,3));// 6
+console.log(multiplyAll(1, 2, 3)); // 6
 
 // Scope and Closures -> Understanding where variables live (scope) and how functions remember their environment (closures) is key to mastering JavaScript.
 
+//what is scope -> scope defines where a variable can be accessed.
+
 // Global Scope--> Declared outside any function – accessible anywhere.
-let name = "Manoj";
+let name4 = "Manoj";
 
 function greet() {
-  console.log(name); // Accessible
+  console.log(name4); // Accessible
 }
 
 greet(); // Manoj
@@ -460,13 +461,65 @@ function greet() {
   console.log(age); // 21
 }
 greet();
-// console.log(age); ❌ Error: age is not defined
+// console.log(age); // Error: age is not defined
 
+//block scope -> declared inside a block {} (e.g., if statement or loop) – only accessible within that block.
+if (true) {
+  let message = "hello!";
+  console.log(message); //hello!
+}
+//console.log(message); // Error: message is not defined
 
+// Closures -> A function that has access to the variables in its own scope, the scope of the outer function, and the global scope.
+// this is super powerful for private variables, async handling and much more.
 
+//private variables using closure
+function createSecret(secret) {
+  return function () {
+    console.log("Secret jaan na he ? ", secret);
+  };
+}
+let getsecret = createSecret("Aachiya");
+getsecret(); // Secret jaan na he ? Aachiya
 
+// Closure with Loops fix using let
+for (let i = 1; i <= 3; i++) {
+  setTimeout(() => {
+    console.log("i is ", i);
+  }, i * 1000);
+}
+// why are closures Useful ?
+//-> Data privacy
+//-> Async programming
+//-> Event handling
+// -> Memoization/caching
 
+//Hoisting & Temporal Dead Zone (TDZ)
 
+//Hoisting -> Hoisting is the process of moving variable declarations to the top of their containing scope.
+//Only declarations are hoisted, not initializations.
 
+//function hoisting
+greet5(); // hello this is hoisting
+function greet5() {
+  console.log("hello this is hoisting");
+}
 
+//function expression are NOT Hoisted
+//sayHi(); // Error : sayHi is not a function
+var sayHi = function () {
+  console.log("Hi");
+};
 
+// Temporal Dead Zone (TDZ) -> A time period during which a variable is not accessible.
+//console.log(a2); // ReferenceError: a2 is not defined
+//let a2 = 10;
+
+//var -> function scope
+//let -> block scope
+//const -> block scope
+
+//<-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+//Intermediate  Javascript -> 
+
+//Callbacks, Promises & async/await
