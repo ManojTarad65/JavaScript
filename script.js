@@ -520,6 +520,193 @@ var sayHi = function () {
 //const -> block scope
 
 //<-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-//Intermediate  Javascript -> 
+//Intermediate  Javascript ->
 
+//Javascript is a single-threaded, but it can handle asychronous operations using these tools:
 //Callbacks, Promises & async/await
+
+//Callbacks -> A callback is a function passed as an argument to another function and is executed after some operation has completed.
+
+//Example of callback
+function greet6(name, callback) {
+  console.log("hello," + name);
+  callback();
+}
+function sayBye() {
+  console.log("Goodbye!");
+}
+greet6("manoj", sayBye); // hello manoj, Goodbye!
+
+//setTimeout callback
+setTimeout(function () {
+  console.log("this prints after 2 seconds");
+}, 2000);
+
+//Promise -> it represents a value that may be available now, in the future, or never.
+//States -> pending, fulfilled, rejected
+//Methods -> then, catch, finally
+
+let promise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Promise fulfilled");
+  } else {
+    reject("It failed");
+  }
+});
+promise
+  .then((res) => console.log(res)) //Promise fulfilled
+  .catch((err) => console.log(err)); // It failed
+
+//simulate asynchronous Task
+function getData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("dataloaded");
+    }, 2000);
+  });
+}
+getData().then((data) => console.log(data)); // dataloadded after 2 seconds
+
+//Async/Await -> A way to write asynchronous code that looks synchronous.
+//Syntax -> async function name(){}
+//its a clear way to handle promises
+
+async function fetchData() {
+  let response = await getData();
+  console.log(response);
+}
+fetchData();
+
+// with Try/ Catch
+async function fetchData() {
+  try {
+    let result = await getData();
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//DOM(Document Object Model) -> is the interface between your HTML and Javascript to read, update, and manipulate the content and structure of your webpage.
+//Methods -> querySelector, querySelectorAll, getElementById, getElementsByClassName, getElementsByTagName
+
+//by ID --> 
+// let title1 = document.getElementById("title");
+// console.log(title.textContent);
+
+// by class name --> 
+let desc =document.getElementsByClassName("desc")[0];
+console.log(desc.innerText);
+
+// by QuerySelector (modern way) -->
+let title =document.querySelector("#title");
+let desc2 = document.querySelector(".desc");
+
+//changing Content 
+title.innerText = "Hello World";
+desc2.innerHTML = "<b>Welcome to world</b>";
+
+//changing styles
+title.style.color = "tomato";
+desc.style.fontSize = "40px";
+desc.style.color = "blue";
+
+//adding/ Removing Elements
+let newPara= document.createElement("h2");
+newPara.textContent = "this is a new paragraph";
+document.body.appendChild(newPara);
+
+//removing elements
+newPara.remove();
+
+//Event Listeners
+document.getElementById("btn").addEventListener("click", function(){
+  alert("button clicked!");
+});
+//hover/mouse events
+desc.addEventListener("mouseover", function(){
+  desc.style.color = "red";
+})
+
+//input events
+document.getElementById("inputbox").addEventListener("input", function(e){
+ console.log(e.target.value);
+})
+
+
+//Event Bubbling , Event Capturing  & Delegation --------------------------------------->
+
+//Event Bubbling ->when an event on a nested element, bubbles up to its parent elements.
+
+document.getElementById("parent").addEventListener("click", ()=>{
+  console.log("parent clicked");
+});
+document.getElementById("child").addEventListener("click",()=>{
+  console.log("child clicked");
+});
+
+
+//Event Capturing -> its the reverse of  bubbling- the event flows from parent -> child
+// use {capture : true} in addEventListener
+document.getElementById("parent").addEventListener(
+  "click",
+  () => {
+    console.log("parent in capture");
+  },
+  {capture : true}
+);
+
+//stop propagation --> to prevent bubbling/ capturing
+//event.stopPropagation();
+document.getElementById("child").addEventListener("click", (e)=> {
+  e.stopPropagation();
+console.log("child clicked only");
+})
+
+//Event Delegation -> instead of adding event listener to each element, add it to the parent element and use conditions.
+document.getElementById("list").addEventListener("click", function (e){
+  console.log(e.target.tagName=== "LI");{
+    alert("you clicked :"+ e.target.innerText);
+  }
+})
+//why use delegation ?
+// improve performance (one listener instead of many)
+// works for dynamically added elements
+// cleaner and scalable code
+
+//DOM Forms & Validation--> forms are used to collect user input - like names, emails, passwords, etc. but we must validate this input before processing it.
+
+//form events
+const form = document.getElementById("myForm");
+form.addEventListener("submit", function(e){
+  e.preventDefault(); // prevent page reload
+
+let username = document.getElementById("username").value;
+console.log("username: ", username);
+})
+
+//basic validation
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  let username = document.getElementById("username").value;
+  
+  if(username===""){
+    alert("username is required");
+  }else if(username.length < 3){
+    alert("username must be at least 3 characters");
+  }else{
+    alert ("form submitted successfully");
+  }
+})
+
+//validation with regex -> use regular expressions for advanced checks 
+let email = document.getElementById("email").value;
+let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+if (!pattern.test(email)){
+  alert("enter a valid email address");
+ 
+}
+
