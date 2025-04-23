@@ -592,19 +592,19 @@ async function fetchData() {
 //DOM(Document Object Model) -> is the interface between your HTML and Javascript to read, update, and manipulate the content and structure of your webpage.
 //Methods -> querySelector, querySelectorAll, getElementById, getElementsByClassName, getElementsByTagName
 
-//by ID --> 
+//by ID -->
 // let title1 = document.getElementById("title");
 // console.log(title.textContent);
 
-// by class name --> 
-let desc =document.getElementsByClassName("desc")[0];
+// by class name -->
+let desc = document.getElementsByClassName("desc")[0];
 console.log(desc.innerText);
 
 // by QuerySelector (modern way) -->
-let title =document.querySelector("#title");
+let title = document.querySelector("#title");
 let desc2 = document.querySelector(".desc");
 
-//changing Content 
+//changing Content
 title.innerText = "Hello World";
 desc2.innerHTML = "<b>Welcome to world</b>";
 
@@ -614,7 +614,7 @@ desc.style.fontSize = "40px";
 desc.style.color = "blue";
 
 //adding/ Removing Elements
-let newPara= document.createElement("h2");
+let newPara = document.createElement("h2");
 newPara.textContent = "this is a new paragraph";
 document.body.appendChild(newPara);
 
@@ -622,31 +622,29 @@ document.body.appendChild(newPara);
 newPara.remove();
 
 //Event Listeners
-document.getElementById("btn").addEventListener("click", function(){
+document.getElementById("btn").addEventListener("click", function () {
   alert("button clicked!");
 });
 //hover/mouse events
-desc.addEventListener("mouseover", function(){
+desc.addEventListener("mouseover", function () {
   desc.style.color = "red";
-})
+});
 
 //input events
-document.getElementById("inputbox").addEventListener("input", function(e){
- console.log(e.target.value);
-})
-
+document.getElementById("inputbox").addEventListener("input", function (e) {
+  console.log(e.target.value);
+});
 
 //Event Bubbling , Event Capturing  & Delegation --------------------------------------->
 
 //Event Bubbling ->when an event on a nested element, bubbles up to its parent elements.
 
-document.getElementById("parent").addEventListener("click", ()=>{
+document.getElementById("parent").addEventListener("click", () => {
   console.log("parent clicked");
 });
-document.getElementById("child").addEventListener("click",()=>{
+document.getElementById("child").addEventListener("click", () => {
   console.log("child clicked");
 });
-
 
 //Event Capturing -> its the reverse of  bubbling- the event flows from parent -> child
 // use {capture : true} in addEventListener
@@ -655,22 +653,23 @@ document.getElementById("parent").addEventListener(
   () => {
     console.log("parent in capture");
   },
-  {capture : true}
+  { capture: true }
 );
 
 //stop propagation --> to prevent bubbling/ capturing
 //event.stopPropagation();
-document.getElementById("child").addEventListener("click", (e)=> {
+document.getElementById("child").addEventListener("click", (e) => {
   e.stopPropagation();
-console.log("child clicked only");
-})
+  console.log("child clicked only");
+});
 
 //Event Delegation -> instead of adding event listener to each element, add it to the parent element and use conditions.
-document.getElementById("list").addEventListener("click", function (e){
-  console.log(e.target.tagName=== "LI");{
-    alert("you clicked :"+ e.target.innerText);
+document.getElementById("list").addEventListener("click", function (e) {
+  console.log(e.target.tagName === "LI");
+  {
+    alert("you clicked :" + e.target.innerText);
   }
-})
+});
 //why use delegation ?
 // improve performance (one listener instead of many)
 // works for dynamically added elements
@@ -680,33 +679,166 @@ document.getElementById("list").addEventListener("click", function (e){
 
 //form events
 const form = document.getElementById("myForm");
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function (e) {
   e.preventDefault(); // prevent page reload
 
-let username = document.getElementById("username").value;
-console.log("username: ", username);
-})
+  let username = document.getElementById("username").value;
+  console.log("username: ", username);
+});
 
 //basic validation
-form.addEventListener("submit", function(e){
-  e.preventDefault();
-  let username = document.getElementById("username").value;
-  
-  if(username===""){
-    alert("username is required");
-  }else if(username.length < 3){
-    alert("username must be at least 3 characters");
-  }else{
-    alert ("form submitted successfully");
-  }
-})
+// form.addEventListener("submit", function(e){
+//   e.preventDefault();
+//   let username = document.getElementById("username").value;
 
-//validation with regex -> use regular expressions for advanced checks 
+//   if(username===""){
+//     alert("username is required");
+//   }else if(username.length < 3){
+//     alert("username must be at least 3 characters");
+//   }else{
+//     alert ("form submitted successfully");
+//   }
+// })
+
+//validation with regex -> use regular expressions for advanced checks
 let email = document.getElementById("email").value;
 let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-if (!pattern.test(email)){
-  alert("enter a valid email address");
- 
+if (!pattern.test(email)) {
+  console.log("enter a valid email address");
+}
+// Real time validation -> show error message as the user types;
+let input = document.getElementById("username");
+
+input.addEventListener("input", function () {
+  if (input.value.length < 3) {
+    input.style.border = "2px solid red";
+  } else {
+    input.style.border = "2px solid green";
+  }
+});
+//Passward
+let password = document.getElementById("password").value;
+
+let pattern1 = /^[A-Za-z]\w{5,14}$/;
+
+if (!pattern1.test(password)) {
+  console.log("enter a valid password");
 }
 
+//Disable/ Enable submit button
+const btn = document.querySelector("button");
+
+input.addEventListener("input", () => {
+  btn.disabled = input.value.length < 3;
+});
+
+//javascript Classes & OOPs (object-Oriented Programming)
+//what is OOP?
+// OOPs in a programming paradigm based on the concept of objects--real-world entities like a car, user, or student. Each object can have:
+// properties (attributes) and methods (functions)
+
+//Class -> blueprint/template for creating objects
+class student1 {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`hello, I am ${this.name} and I am ${this.age} years old`);
+  }
+}
+student = new student1("manoj", 21);
+student.greet();
+
+// creating objects (Instances)
+const student2 = new student1("manoj", 21);
+const student3 = new student1("aman", 31);
+student2.greet();
+student3.greet();
+
+// this -> refers to the current object
+// in constructor and methods,  this.propertyName accesses object data.
+
+//class methods
+class Car {
+  constructor(brand) {
+    this.brand = brand;
+  }
+
+  start() {
+    console.log(`${this.brand} is starting .....`);
+  }
+}
+let car1 = new Car("Toyoto");
+car1.start(); // Toyoto is starting .....
+
+//Inheritance -> you can create a child from a parent class
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a noise`);
+  }
+}
+class Dog extends Animal {
+  bark() {
+    console.log(`${this.name} barks`);
+  }
+}
+const k = new Dog("Tommmy");
+k.speak(); // Tommmy makes a noise
+k.bark(); // Tommmy barks
+
+// super() keyword -> is used to call the parent constructor
+class Vehicale {
+  constructor(type) {
+    this.type = type;
+  }
+}
+class Bike extends Vehicale {
+  constructor(type, brand) {
+    super(type);
+    this.brand = brand;
+  }
+  display() {
+    console.log(`${this.brand} is a ${this.type}`);
+  }
+}
+let l = new Bike("two-wheeler", "Hero");
+l.display(); // Hero is a two-wheeler
+
+//Getters & Setters
+class Product {
+  constructor(price) {
+    this._price = price;
+  }
+  get price() {
+    return `$${this._price}`;
+  }
+  set price(value) {
+    if (value < 0) return;
+    this._price = value;
+  }
+}
+const p = new Product(100);
+console.log(p.price); // $100
+
+p.price = 150;
+console.log(p.price); // $150
+
+// JavaScript Modules (Import & Export)
+// In real-world applications, code is often split across multiple files for better organization and reusability.Javascript modules help you do exactly that.
+
+//what is  a module? -> a module is a self-contained unit of code that can be imported and used by other modules.
+
+//EXPORTING a module
+// -> greet.js -> default export
+// -> mathUtils.js -> named export
+
+// IMPORTING a module
+//import greet from "./greet.js";
+//greet("manoj");// hello,a manoj
